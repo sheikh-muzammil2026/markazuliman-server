@@ -25,7 +25,7 @@ async function connectDB() {
   let connected = false;
   for (let attempt = 1; attempt <= 5; attempt++) {
     try {
-      await client.connect();
+      if (!global._mongoClientPromise) { global._mongoClientPromise = client.connect(); } await global._mongoClientPromise;
       connected = true;
       console.log("MongoDB-র সাথে সফলভাবে কানেক্টেড হয়েছে! 🚀");
       break;
@@ -38,7 +38,7 @@ async function connectDB() {
     }
   }
 
-  database = client.db("aimhabiganj");
+  database = client.db("markazuliman");
 
   // কালেকশনসমূহ
   collections = {

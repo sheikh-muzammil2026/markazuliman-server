@@ -1,5 +1,5 @@
 const allowedOrigins = [
-  "https://aimpurbachal.com",
+  "https://markazuliman.com", "https://www.markazuliman.com", "https://markazulimandhaka.com", "https://www.markazulimandhaka.com", "https://markazuliman.vercel.app", "https://markazuliman-server.vercel.app", "https://aimpurbachal.com",
   "https://www.aimpurbachal.com",
   "https://api.aimpurbachal.com",
   "https://aimhabiganj.vercel.app",
@@ -11,7 +11,7 @@ const isOriginAllowed = (origin) => {
   const cleanOrigin = origin.replace(/\/$/, "");
   return (
     allowedOrigins.includes(cleanOrigin) ||
-    cleanOrigin.endsWith(".aimpurbachal.com") ||
+    cleanOrigin.endsWith(".markazuliman.com") || cleanOrigin.endsWith(".markazulimandhaka.com") || cleanOrigin.endsWith(".aimpurbachal.com") ||
     cleanOrigin.endsWith(".aimhabiganj.com") ||
     cleanOrigin.endsWith(".vercel.app")
   );

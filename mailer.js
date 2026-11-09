@@ -33,7 +33,7 @@ const getSender = () => {
   return (
     process.env.SMTP_FROM ||
     process.env.EMAIL_FROM ||
-    `"আস-সালাম আইডিয়াল মাদরাসা" <${process.env.SMTP_USER || process.env.EMAIL_USER || "no-reply@aimhabiganj.edu.bd"}>`
+    `"মারকাযুল ঈমান ঢাকা" <${process.env.SMTP_USER || process.env.EMAIL_USER || "no-reply@markazuliman.com"}>`
   );
 };
 
@@ -60,15 +60,15 @@ const baseHtmlTemplate = ({ title, preheader, contentHtml }) => `
 <body>
   <div class="container">
     <div class="header">
-      <h1>আস-সালাম আইডিয়াল মাদরাসা (এইম)</h1>
-      <p>হবিগঞ্জ, বাংলাদেশ</p>
+      <h1>মারকাযুল ঈমান ঢাকা (Markazul Iman Dhaka)</h1>
+      <p>বাড়ি# ৪৮৪, রোড# ১২, পশ্চিম নাখালপাড়া, তেজগাঁও, ঢাকা।</p>
     </div>
     <div class="body">
       ${contentHtml}
     </div>
     <div class="footer">
       <p>এটি একটি স্বয়ংক্রিয় বার্তা। এই ইমেইলে সরাসরি উত্তর দেবেন না।</p>
-      <p>&copy; ${new Date().getFullYear()} আস-সালাম আইডিয়াল মাদরাসা (AIM). সর্বস্বত্ব সংরক্ষিত।</p>
+      <p>&copy; ${new Date().getFullYear()} মারকাযুল ঈমান ঢাকা (Markazul Iman Dhaka). সর্বস্বত্ব সংরক্ষিত।</p>
     </div>
   </div>
 </body>
@@ -106,11 +106,11 @@ async function sendEmail({ to, subject, html, text }) {
 }
 
 async function sendPasswordResetEmail({ to, name, resetUrl }) {
-  const subject = "পাসওয়ার্ড রিসেট করার অনুরোধ - AIM";
+  const subject = "পাসওয়ার্ড রিসেট করার অনুরোধ - মারকাযুল ঈমান ঢাকা";
   const contentHtml = `
     <h2 style="font-size: 18px; color: #0f172a; margin-top: 0;">মুহতারাম ${name || "ব্যবহারকারী"},</h2>
     <p style="font-size: 14px; line-height: 1.6; color: #334155;">
-      আপনার আস-সালাম আইডিয়াল মাদরাসা (এইম) অ্যাকাউন্টের পাসওয়ার্ড রিসেট করার অনুরোধ গ্রহণ করা হয়েছে। নতুন পাসওয়ার্ড সেট করতে নিচের বাটনে ক্লিক করুন:
+      আপনার মারকাযুল ঈমান ঢাকা অ্যাকাউন্টের পাসওয়ার্ড রিসেট করার অনুরোধ গ্রহণ করা হয়েছে। নতুন পাসওয়ার্ড সেট করতে নিচের বাটনে ক্লিক করুন:
     </p>
     <div style="text-align: center;">
       <a href="${resetUrl}" class="btn" target="_blank">পাসওয়ার্ড রিসেট করুন</a>
@@ -130,18 +130,18 @@ async function sendPasswordResetEmail({ to, name, resetUrl }) {
     text: `পাসওয়ার্ড রিসেট করতে নিচের লিংকে যান:\n${resetUrl}\n(মেয়াদ ১ ঘণ্টা)`,
     html: baseHtmlTemplate({
       title: subject,
-      preheader: "AIM পাসওয়ার্ড রিসেট লিংক",
+      preheader: "মারকাযুল ঈমান ঢাকা পাসওয়ার্ড রিসেট লিংক",
       contentHtml,
     }),
   });
 }
 
 async function sendEmailVerificationEmail({ to, name, verifyUrl }) {
-  const subject = "ইমেইল পরিবর্তন নিশ্চিতকরণ - AIM";
+  const subject = "ইমেইল পরিবর্তন নিশ্চিতকরণ - মারকাযুল ঈমান ঢাকা";
   const contentHtml = `
     <h2 style="font-size: 18px; color: #0f172a; margin-top: 0;">মুহতারাম ${name || "ব্যবহারকারী"},</h2>
     <p style="font-size: 14px; line-height: 1.6; color: #334155;">
-      আপনার আস-সালাম আইডিয়াল মাদরাসা অ্যাকাউন্টের ইমেইল ঠিকানা হিসেবে এই ইমেইলটি যুক্ত করার অনুরোধ করা হয়েছে। ইমেইল পরিবর্তন নিশ্চিত ও সম্পন্ন করতে নিচের বাটনে ক্লিক করুন:
+      আপনার মারকাযুল ঈমান ঢাকা অ্যাকাউন্টের ইমেইল ঠিকানা হিসেবে এই ইমেইলটি যুক্ত করার অনুরোধ করা হয়েছে। ইমেইল পরিবর্তন নিশ্চিত ও সম্পন্ন করতে নিচের বাটনে ক্লিক করুন:
     </p>
     <div style="text-align: center;">
       <a href="${verifyUrl}" class="btn" target="_blank">ইমেইল নিশ্চিত করুন</a>
@@ -161,18 +161,18 @@ async function sendEmailVerificationEmail({ to, name, verifyUrl }) {
     text: `ইমেইল নিশ্চিত করতে নিচের লিংকে যান:\n${verifyUrl}\n(মেয়াদ ১ ঘণ্টা)`,
     html: baseHtmlTemplate({
       title: subject,
-      preheader: "AIM ইমেইল পরিবর্তন নিশ্চিতকরণ",
+      preheader: "মারকাযুল ঈমান ঢাকা ইমেইল পরিবর্তন নিশ্চিতকরণ",
       contentHtml,
     }),
   });
 }
 
 async function sendPasswordChangedNotification({ to, name }) {
-  const subject = "আপনার পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে - AIM";
+  const subject = "আপনার পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে - মারকাযুল ঈমান ঢাকা";
   const contentHtml = `
     <h2 style="font-size: 18px; color: #0f172a; margin-top: 0;">মুহতারাম ${name || "ব্যবহারকারী"},</h2>
     <p style="font-size: 14px; line-height: 1.6; color: #334155;">
-      আপনার আস-সালাম আইডিয়াল মাদরাসা অ্যাকাউন্টের পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে।
+      আপনার মারকাযুল ঈমান ঢাকা অ্যাকাউন্টের পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে।
     </p>
     <p style="font-size: 13px; color: #64748b;">
       পরিবর্তনের সময়: ${new Date().toLocaleString("bn-BD", { timeZone: "Asia/Dhaka" })}
@@ -185,10 +185,10 @@ async function sendPasswordChangedNotification({ to, name }) {
   return sendEmail({
     to,
     subject,
-    text: "আপনার আস-সালাম আইডিয়াল মাদরাসা অ্যাকাউন্টের পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে।",
+    text: "আপনার মারকাযুল ঈমান ঢাকা অ্যাকাউন্টের পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে।",
     html: baseHtmlTemplate({
       title: subject,
-      preheader: "AIM পাসওয়ার্ড পরিবর্তন নোটিফিকেশন",
+      preheader: "মারকাযুল ঈমান ঢাকা পাসওয়ার্ড পরিবর্তন নোটিফিকেশন",
       contentHtml,
     }),
   });

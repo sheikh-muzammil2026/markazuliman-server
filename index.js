@@ -71,7 +71,7 @@ async function run() {
 
     // মূল রুট
     app.get("/", (req, res) => {
-      res.send("As-Salam Ideal Madrasah  (AIM) Server is Running!");
+      res.send("Markazul Iman Dhaka Server is Running!");
     });
 
     // গ্লোবাল এরর হ্যান্ডলার (CORS ত্রুটি সহ) ও 404 Fallback
